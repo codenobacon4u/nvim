@@ -1,2 +1,2 @@
-require("user.config.colors")
-require("user.config.statusline")
+-- require("user.config.colors")
+-- require("user.config.statusline")
