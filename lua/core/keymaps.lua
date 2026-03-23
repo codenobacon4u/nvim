@@ -22,7 +22,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-;>", "<C-w>;")
 
 vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<cr>")
-vim.keymap.set("n", "<leader>tn", "<cmd>tab split<cr>")
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>")
+vim.keymap.set("n", "<leader>ts", "<cmd>tab split<cr>")
 vim.keymap.set("n", "<leader>to", "<cmd>tabonly<cr>")
 
 vim.keymap.set("t", "<leader><esc>", "<C-\\><C-N>")
@@ -45,3 +46,13 @@ vim.keymap.set('n', '<M-T>', function()
     require('user.core.float_term').float_term(nil, {})
 end, { desc = 'Open terminal (root dir)' })
 vim.keymap.set('t', '<M-t>', '<cmd>close<cr>', { desc = 'Close terminal' })
+
+-- Diagnostics
+vim.keymap.set('n', '<leader>.', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump { count = -1, float = true }
+end, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump { count = 1, float = true }
+end, { desc = 'Go to next diagnostic message' })
